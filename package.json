@@ -1,0 +1,20 @@
+{
+  "name": "dailyquiz",
+  "version": "1.0.0",
+  "description": "DailyQuiz Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "CodeChef Chapter",
+    "SNU",
+    "Discord Bot",
+    "Daily Quiz"
+  ],
+  "author": "Soumyadip Mondal",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}

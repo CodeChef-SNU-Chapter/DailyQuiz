@@ -1,0 +1,23 @@
+name: 'Daily Quiz Bot'
+author: 'Soumyadip Mondal (http://www.github.com/unsuitable001)'
+description: 'Daily Quiz Delivery bot for CodeChef SNU Chapter'
+
+inputs:
+  gh_token:
+    description: 'GitHub access token with Repo scope'
+    required: false
+    default: ${{ github.token }}
+  answer:
+    description: 'Is this an answer?'
+    required: false
+    default: false
+outputs:
+  results:
+    description: "Today's Quiz sent"
+
+runs:
+  using: node12
+  main: index.js
+branding:
+  icon: 'activity'
+  color: 'blue'
