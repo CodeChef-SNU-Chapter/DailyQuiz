@@ -1,12 +1,12 @@
-// const core = require('@actions/core');
+const core = require('@actions/core');
 const axios = require('axios')
 const fs = require('fs');
 
-// const GITHUB_TOKEN = core.getInput('gh_token');
-// const ANSWER = core.getInput('answer');
+const GITHUB_TOKEN = core.getInput('gh_token');
+const ANSWER = core.getInput('answer');
 
 
-// core.setSecret(GITHUB_TOKEN);
+core.setSecret(GITHUB_TOKEN);
 
 let rawdata = fs.readFileSync('current',{encoding:'utf8', flag:'r'});
 rawdata = rawdata.trim();
@@ -16,7 +16,7 @@ let quiz = JSON.parse(rawdata);
 var payload;
 
 if(ANSWER == true) {
-  payload = `**Answer**${quiz.answer}\n**Explaination**\n${quiz.explaination}`;
+  payload = `**Answer** ${quiz.answer}\n**Explaination**\n${quiz.explaination}`;
 }
 else {
   payload = `@everyone Today's Question by ${quiz.username}\n${quiz.question}\n\n**Answer by adding proper reaction (or, tap on existing)**\nHelp: https://discord.com/channels/777126470946390017/777522230543908884/810779429608751154`;

@@ -8,9 +8,9 @@ jobs:
     name: Deliver new quiz answers from repo, daily.
     runs-on: ubuntu-latest
     steps:
-      - uses: CodeChef-SNU-Chapter/DailyQuiz@master
+      - uses: actions/checkout@v2
+      - uses: ./
         with:
           answer: true
-      - uses: actions/checkout@v2
       - name: Increment File Number
-      - run: ./postscript.sh
+        run: ./postscript.sh
