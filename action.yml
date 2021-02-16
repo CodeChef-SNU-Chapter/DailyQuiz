@@ -10,7 +10,7 @@ inputs:
   answer:
     description: 'Is this an answer?'
     required: false
-    default: false
+    default: "false"
 outputs:
   results:
     description: "Today's Quiz sent"
