@@ -11,6 +11,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./
         with:
-          answer: true
+          answer: "true"
       - name: Increment File Number
         run: ./postscript.sh

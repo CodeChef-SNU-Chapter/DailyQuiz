@@ -15,7 +15,7 @@ rawdata = fs.readFileSync(`questions/${rawdata}.json`);
 let quiz = JSON.parse(rawdata);
 var payload;
 
-if(ANSWER == true) {
+if(ANSWER == "true") {
   payload = `**Answer** ${quiz.answer}\n**Explaination**\n${quiz.explaination}`;
 }
 else {
