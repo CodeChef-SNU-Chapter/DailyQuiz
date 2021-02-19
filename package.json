@@ -1,0 +1,23 @@
+{
+  "name": "dailyquiz",
+  "version": "1.0.0",
+  "description": "Daily Quizzes | CodeChef SNU Chapter",
+  "main": "index.js",
+  "repository": "https://github.com/CodeChef-SNU-Chapter/DailyQuiz",
+  "author": "CodeChef SNU Chapter",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.0.2",
+    "autoprefixer": "9",
+    "netlify-cli": "^3.8.4",
+    "postcss": "7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "vuepress": "^1.7.1"
+  },
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build"
+  },
+  "dependencies": {}
+}
