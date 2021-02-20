@@ -1,0 +1,6 @@
+{
+    "username": "unsuitable001",
+    "question": "```char str[] = 'ABCD';```\nThis syntax is valid in\n:one: C\n:two: C++\n:three: C & C++ both\n:four: None\n",
+    "answer": ":four:",
+    "explaination": "In C/C++, strings must be enclosed in double quotation, not in single quotation."
+}
