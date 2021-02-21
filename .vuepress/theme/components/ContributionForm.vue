@@ -75,6 +75,9 @@ export default {
                         this.$data.submissionResp = "We've noted down your question!"
                     }
                 })
+            }).catch(e => {
+                this.$data.showForm = false;
+                console.log(e);
             })
         }
     }
