@@ -8,3 +8,6 @@
 [dev]
   # Local dev command. A.k.a npm start
   command = "yarn dev"
+
+[template.environment]
+  FAUNADB_SERVER_SECRET = "Your FaunaDb Server Secret"

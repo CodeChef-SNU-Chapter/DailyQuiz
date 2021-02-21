@@ -10,12 +10,25 @@
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "autoprefixer": "9",
+    "netlify-lambda": "^2.0.3",
     "postcss": "7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vuepress": "^1.7.1"
   },
   "scripts": {
+    "bootstrap": "netlify dev:exec node ./scripts/bootstrap-fauna-database.js",
     "dev": "vuepress dev",
     "build": "vuepress build"
+  },
+  "dependencies": {
+    "faunadb": "^4.1.0"
+  },
+  "proxy": {
+    "/.netlify/functions": {
+      "target": "http://localhost:9000",
+      "pathRewrite": {
+        "^/\\.netlify/functions": ""
+      }
+    }
   }
 }

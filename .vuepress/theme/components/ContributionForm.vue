@@ -1,5 +1,5 @@
 <template>
-    <form class="mt-6" enctype='application/json' v-on:submit.prevent="submitQuestion()">
+    <form class="mt-6" enctype='application/json' v-on:submit.prevent="submitQuestion()" v-if="showForm">
         <div class="flex flex-col mb-4">
             <label for="username">Username</label>
             <input type="text" v-model="username" name="username" id="username" required>
@@ -17,7 +17,7 @@
             <label for="correct">Correct Option</label>
             <span>
                 <span v-for="n in 4" class="mb-2 pr-2">
-                    <input type="radio" name="correct" v-bind:id="n" required>
+                    <input type="radio" name="correct" v-bind:id="n" v-bind:value="n" v-model="answer" required>
                     <span class="uppercase" v-bind:for="n">{{ n }}</span>
                 </span>
             </span>
@@ -27,8 +27,11 @@
             <textarea v-model="explaination" name="explaination" id="explaination" placeholder="MARKDOWN (Discord) formatting is supported!" required>
             </textarea>
         </div>
-        <button class="transition-colors duration-200 bg-green-700 hover:bg-green-900 block text-white uppercase text-lg mx-auto py-3 px-6 rounded-sm" type="submit">Submit</button>
+        <button class="transition-colors duration-200 bg-green-700 hover:bg-green-900 block text-white uppercase text-lg mx-auto py-3 px-6 rounded-sm" type="submit" :disabled="onProgress">{{onProgress ? 'Please Wait...' : 'Submit'}}</button>
     </form>
+    <div v-else="showForm">
+       {{submissionResp}} Thank You for your effort.
+    </div>
 </template>
 
 <script>
@@ -45,12 +48,34 @@ export default {
                 'four': ''
             },
             answer: "",
-            explaination: ""
+            explaination: "",
+            showForm: true,
+            submissionResp: "Unfortunately, We can't process your request!",
+            onProgress: false
         }
     },
     methods: {
         submitQuestion: function () {
             console.log(this.$data);
+            this.$data.onProgress = true;
+            const data = {
+                username: this.$data.username,
+                question: this.$data.question,
+                options: JSON.stringify(this.$data.options),
+                answer: this.$data.answer,
+                explaination: this.$data.explaination
+            }
+            return fetch('/.netlify/functions/contribute', {
+                body: JSON.stringify(data),
+                method: 'POST'
+            }).then(response => {
+                response.text().then(data => {
+                    this.$data.showForm = false;
+                    if(data === "0") {
+                        this.$data.submissionResp = "We've noted down your question!"
+                    }
+                })
+            })
         }
     }
 }
