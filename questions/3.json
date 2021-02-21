@@ -1,6 +1,0 @@
-{
-    "username": "codedex11",
-    "question": "```#include <stdio.h>\nusing namespace std;\n\nint main()\n{\nint n=0;\nscanf(\"%d\",&n);\nint arr[n];\narr[0]=1;\nprintf(\"%d\",arr[0]);\nreturn 0;\n}```\n\nWhat is the result after execution of the above code?\n\n:one: runs successfully on c++ compiler but doesn't run successfully on c compiler\n:two: runs successfully on c compiler but doesn't run successfully on c++ compiler\n:three: runs successfully on both compilers outputs 1\n:four: doesn't run successfully on either of the compilers\n",
-    "answer": ":one:",
-    "explaination": "namespace isn't defined in c whereas in c++ you need a namespace to compile a program."
-}

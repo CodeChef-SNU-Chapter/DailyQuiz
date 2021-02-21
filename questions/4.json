@@ -1,6 +1,0 @@
-{
-    "username": "codedex11",
-    "question": "What is the output of the following code for the given sample input?\n\n```#include <iostream>\n\nusing namespace std;\n\nint main()\n{\n    int n; char name[25];\n    cin>>n;\n    cin.getline(name,25);\n    cout<<name<<n;\n    \n    return 0;\n}```\n\nSample Input:\n20\nCodechef\n\n\nOptions:\n:one: Codechef20\n:two: 20Codechef\n:three: 20\n:four: Codechef\n:five: Syntax Error",
-    "answer": ":three:",
-    "explaination": "Since std::cin doesn't read the newline character it is left in the stream and when cin.getline is executed it encounters the newline character and terminates.\nHence \"name\" has no input and n is equal to 20."
-}
