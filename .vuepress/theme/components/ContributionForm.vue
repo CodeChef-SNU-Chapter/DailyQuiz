@@ -71,7 +71,7 @@ export default {
                 answer: this.$data.answer,
                 explaination: this.$data.explaination
             }
-            return fetch('/.netlify/functions/contribute', {
+            return fetch('.netlify/functions/contribute', {
                 body: JSON.stringify(data),
                 method: 'POST'
             }).then(response => {
