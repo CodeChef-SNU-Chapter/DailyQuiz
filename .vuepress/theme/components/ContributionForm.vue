@@ -11,13 +11,13 @@
         </div>
         <div class="flex flex-col mb-4">
             <label for="options">Options</label>
-            <input v-for="n in ['one','two','three','four']" type="text" v-model="options[n]" name="options" v-bind:id="n" v-bind:placeholder="'option ' + n" required>
+            <input v-for="n in 4" type="text" v-model="options[numToLit[n]]" name="options" v-bind:id="numToLit[n]" v-bind:placeholder="'option ' + numToLit[n]" required>
         </div>
         <div class="mb-4 flex justify-between">
             <label for="correct">Correct Option</label>
             <span>
                 <span v-for="n in 4" class="mb-2 pr-2">
-                    <input type="radio" name="correct" v-bind:id="n" v-bind:value="n" v-model="answer" required>
+                    <input type="radio" name="correct" v-bind:id="n" v-bind:value="numToLit[n]" v-model="answer" required>
                     <span class="uppercase" v-bind:for="n">{{ n }}</span>
                 </span>
             </span>
@@ -51,12 +51,18 @@ export default {
             explaination: "",
             showForm: true,
             submissionResp: "Unfortunately, We can't process your request!",
-            onProgress: false
+            onProgress: false,
+            numToLit: [
+                'zero',
+                'one',
+                'two',
+                'three',
+                'four']
         }
     },
     methods: {
         submitQuestion: function () {
-            console.log(this.$data);
+            console.log(JSON.stringify(this.$data.options));
             this.$data.onProgress = true;
             const data = {
                 username: this.$data.username,
