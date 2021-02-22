@@ -71,7 +71,7 @@ export default {
                 answer: this.$data.answer,
                 explaination: this.$data.explaination
             }
-            return fetch('/dailyquiz/.netlify/functions/contribute', {
+            return fetch('https://optimistic-colden-ddfef7.netlify.app/.netlify/functions/contribute', {
                 body: JSON.stringify(data),
                 method: 'POST'
             }).then(response => {
