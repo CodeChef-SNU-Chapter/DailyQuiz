@@ -22,6 +22,11 @@ exports.handler = async function(event, context) {
         console.log('success', response);
         /* Success! return the response with statusCode 200 */
         return {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "GET, POST, OPTION",
+            },
             statusCode: 200,
             body: "0"
         };
@@ -29,6 +34,11 @@ exports.handler = async function(event, context) {
         console.log('error', error)
         /* Error! return the error with statusCode 400 */
         return {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "GET, POST, OPTION",
+            },
             statusCode: 400,
             body: "1"
         };
