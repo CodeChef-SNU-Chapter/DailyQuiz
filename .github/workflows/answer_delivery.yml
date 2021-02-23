@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./
+        env:
+          FAUNADB_SERVER_SECRET: ${{ secrets.FAUNADB_SERVER_KEY }}
+          DISCORD_KEY: ${{ secrets.DISCORD_WEBHOOK_URL }}
         with:
           answer: "true"
-          env:
-            FAUNADB_SERVER_SECRET: ${{ secrets.FAUNADB_SERVER_KEY }}
-            DISCORD_KEY: ${{ secrets.DISCORD_WEBHOOK_URL }}
