@@ -1,6 +1,0 @@
-{
-    "username": "unsuitable001",
-    "question": "```int x = 12, y = 18;\nint z = (++x) + (y--);```\nWhat will be the value of z?\n:one: 30\n:two: 31\n:three: 29\n:four: Syntax Error\n",
-    "answer": ":two:",
-    "explaination": "Initially, x is 12 & y is 18. ++x is pre-increment & y-- is post-decrement. Hence, the actual equation evaluated for z is (13 + 18), that is 31"
-}
