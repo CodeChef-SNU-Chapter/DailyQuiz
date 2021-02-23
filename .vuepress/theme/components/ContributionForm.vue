@@ -6,7 +6,7 @@
         </div>
         <div class="flex flex-col mb-4">
             <label for="question">Question</label>
-            <textarea v-model="question" name="question" id="question" placeholder="MARKDOWN (Discord) formatting is supported!" required>
+            <textarea v-model="question" name="question" id="question" placeholder="Tip: When posting code, wrap it in ```code``` . Discord formatting supported!" required>
             </textarea>
         </div>
         <div class="flex flex-col mb-4">
@@ -24,13 +24,16 @@
         </div>
         <div class="flex flex-col mb-4">
             <label for="explaination">Explaination</label>
-            <textarea v-model="explaination" name="explaination" id="explaination" placeholder="MARKDOWN (Discord) formatting is supported!" required>
+            <textarea v-model="explaination" name="explaination" id="explaination" placeholder="Tip: When posting code, wrap it in ```code``` . Discord formatting supported!" required>
             </textarea>
         </div>
         <button class="transition-colors duration-200 bg-green-700 hover:bg-green-900 block text-white uppercase text-lg mx-auto py-3 px-6 rounded-sm" type="submit" :disabled="onProgress">{{onProgress ? 'Please Wait...' : 'Submit'}}</button>
     </form>
     <div v-else="showForm">
-       {{submissionResp}} Thank You for your effort.
+        <p class="m-2 p-4">
+            {{submissionResp}} Thank You for your effort.
+        </p>
+        <button class="transition-colors duration-200 bg-purple-700 hover:bg-purple-900 block text-white uppercase text-lg mx-auto py-3 px-6 rounded-sm" @click="reset()">Contribute Another Question</button>
     </div>
 </template>
 
@@ -58,9 +61,12 @@ export default {
                 'two',
                 'three',
                 'four']
-        }
+        };
     },
     methods: {
+        reset: function () {
+            Object.assign(this.$data, this.$options.data.apply(this));
+        },
         submitQuestion: function () {
             console.log(JSON.stringify(this.$data.options));
             this.$data.onProgress = true;
@@ -71,7 +77,7 @@ export default {
                 answer: this.$data.answer,
                 explaination: this.$data.explaination
             }
-            return fetch('https://optimistic-colden-ddfef7.netlify.app/.netlify/functions/contribute', {
+            return fetch(`${this.$site.themeConfig.mainURL}/.netlify/functions/contribute`, {
                 body: JSON.stringify(data),
                 method: 'POST'
             }).then(response => {
