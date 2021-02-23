@@ -15,7 +15,7 @@ if(ANSWER == "true") {
   ga.getA().then(resp => {
     console.log(resp.data[0]);
     let d = resp.data[0];
-    payload = `**Answer** Option: ${d[1]}\n**Explaination**\n${d[2]}`;
+    payload = `**Answer** Option: :${d[1]}:\n**Explaination**\n${d[2]}\nContribute Own Question: https://ccsnuchapter.netlify.app/dailyquiz`;
     sendMessage();
     ga.delivered(d[0]);
   }).catch(e => {
@@ -31,12 +31,13 @@ else {
     Object.keys(opts).forEach(function(k){
       formattedOpts += `:${k}: ${opts[k]}\n`;
     });
-    payload = `@everyone Today's Question by ${d[1]}\n${d[2]}\nOptions:\n${formattedOpts}\n**Answer by adding proper reaction (or, tap on existing)**\nHelp: https://discord.com/channels/777126470946390017/777522230543908884/810779429608751154`;
+    payload = `@everyone Today's Question by ${d[1]}\n${d[2]}\nOptions:\n${formattedOpts}\n**Answer by adding proper reaction (or, tap on existing)**\nContribute Own Question: https://ccsnuchapter.netlify.app/dailyquiz\nHelp: https://discord.com/channels/777126470946390017/777522230543908884/810779429608751154`;
     console.log(payload);
     sendMessage();
     gq.delivered(d[0]);
   }).catch(e => {
     console.log(e);
+    throw(e);
   });
 }
 
@@ -46,11 +47,12 @@ function sendMessage() {
     "content": payload
   })
   .then(res => {
-    console.log(`statusCode: ${res.statusCode}`)
-    console.log(res)
+    console.log(`statusCode: ${res.statusCode}`);
+    console.log(res);
   })
   .catch(error => {
-    console.error(error)
-  })
+    console.error(error);
+    throw(e);
+  });
 }
 
